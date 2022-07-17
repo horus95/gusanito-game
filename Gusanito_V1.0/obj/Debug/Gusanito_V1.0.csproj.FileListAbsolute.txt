@@ -1,0 +1,20 @@
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.exe.config
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.exe
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.pdb
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csprojResolveAssemblyReference.cache
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1._0.Form1.resources
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1._0.Properties.Resources.resources
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csproj.GenerateResource.Cache
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.exe
+D:\Universidad\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.pdb
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.exe.config
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.exe
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\bin\Debug\Gusanito_V1.0.pdb
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csproj.AssemblyReference.cache
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1._0.Form1.resources
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1._0.Properties.Resources.resources
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csproj.GenerateResource.cache
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.csproj.CoreCompileInputs.cache
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.exe
+C:\Users\Alcides Martinez\Desktop\Gusanito_V1.0\Gusanito_V1.0\obj\Debug\Gusanito_V1.0.pdb
