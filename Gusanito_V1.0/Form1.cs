@@ -31,29 +31,7 @@ namespace Gusanito_V1._0
         private void Form1_Load(object sender, EventArgs e)
         {
             Crear_Mapa();
-            Gusanito = new List<PictureBox>();
-            var headImage= Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\izquierda.jpg"); ;
-            PictureBox Head = new PictureBox{ 
-                Size = new Size(20, 20),
-                Visible=true,
-                Name="Head",
-                Image= headImage,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                BorderStyle = BorderStyle.None,
-                Location= Mapa_pixele[7, 7]
-            };
-            pixel.set(7,7);
-            bajon = new PictureBox {
-                Name="Comidad",
-                Size=new Size(20, 20),
-                SizeMode=PictureBoxSizeMode.StretchImage, 
-                BorderStyle = BorderStyle.None,
-                Image=Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\comida.jpg")
-            };
-            comida_ramdon();
-            Controls.Add(bajon);
-            Controls.Add(Head);
-            Gusanito.Add(Head);
+            this.initialBuild();
             timer.Interval =250;
             timer.Enabled = true;
             timer.Start();
@@ -372,13 +350,37 @@ namespace Gusanito_V1._0
 
         public void destruir()
         {
+            Controls.Clear();
+            this.initialBuild();
+        }
 
-            for (int i = 1; i < Gusanito.Count ; i++ )
+        public void initialBuild()
+        {
+            Gusanito = new List<PictureBox>();
+            var headImage = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\izquierda.jpg"); ;
+            PictureBox Head = new PictureBox
             {
-                Gusanito[i].Image= null;
-                Controls.Remove(Gusanito[i]);
-            }
-            Gusanito.RemoveRange(1, Gusanito.Count - 1);
+                Size = new Size(20, 20),
+                Visible = true,
+                Name = "Head",
+                Image = headImage,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BorderStyle = BorderStyle.None,
+                Location = Mapa_pixele[7, 7]
+            };
+            pixel.set(7, 7);
+            bajon = new PictureBox
+            {
+                Name = "Comidad",
+                Size = new Size(20, 20),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BorderStyle = BorderStyle.None,
+                Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\comida.jpg")
+            };
+            comida_ramdon();
+            Controls.Add(bajon);
+            Controls.Add(Head);
+            Gusanito.Add(Head);
         }
 
         public bool validar_crash()
