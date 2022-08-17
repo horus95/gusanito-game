@@ -27,7 +27,6 @@ namespace Gusanito_V1._0
             InitializeComponent();
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             Crear_Mapa();
@@ -74,7 +73,7 @@ namespace Gusanito_V1._0
                     if (enter == 0)
                     {
                         enter = 1;
-                        Enter_();
+                        Pause();
                         control_mov = 0;
                     }
                     else
@@ -82,54 +81,6 @@ namespace Gusanito_V1._0
                     break;
             }
         }
-
-
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyValue)
-            {
-               case 38:
-                    if (control_mov != 4)
-                    {
-                        control = 38;
-                        control_mov = 2;
-                    }
-                    break;
-                case 40:
-                    if (control_mov != 2)
-                    {
-                        control = 40;
-                        control_mov = 4;
-                    }
-                    break;
-                case 37:
-                    if (control_mov != 3)
-                    {
-                        control = 37;
-                        control_mov = 1;
-                    }
-                    break;
-                case 39:
-                    if (control_mov != 1)
-                    {
-                        control = 39;
-                        control_mov = 3;
-                    }
-                    break;
-                case 13:
-                    control = 13;
-                    if (enter == 0)
-                    {
-                        enter = 1;
-                        Enter_();
-                        control_mov = 0;
-                    }
-                    else
-                        enter = 0;
-                    break;
-            }
-        }
-
 
         private void Crear_Mapa()
         {
@@ -149,151 +100,87 @@ namespace Gusanito_V1._0
             Mover_Gusanito();     
         }
 
+        public void MoveWorm(string image, int X, int Y)
+        {
+            Gusanito[0].Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\" + image);
+            Point ultimo = Gusanito[Gusanito.Count - 1].Location;
+            acomodar_piesas();
+            Gusanito[0].Location = new Point(X, Y);
+            if (bajon.Location == new Point(X, Y))
+            {
+                agregar_nodo(ultimo);
+                comida_ramdon();
+                if (puntos >= min_niv && min_niv <= limite_nv)
+                {
+                    time -= 60;
+                    timer.Interval = time;
+                    min_niv += 5;
+                }
+            }
+            if (validar_crash())
+                Perdiste();
+        }
+
         private void Mover_Gusanito()
         {
             int X,Y;
-            Point ultimo;
-            ultimo = new Point();
-            X=Gusanito[0].Location.X;
+            X = Gusanito[0].Location.X;
             Y = Gusanito[0].Location.Y;
             switch (control)
             {
                 case 38:
                     Y -= 20;
-                    Gusanito[0].Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\arriba.jpg");
                     if (Y >= 0)
-                    {
-                        ultimo = Gusanito[Gusanito.Count - 1].Location;
-                        acomodar_piesas();
-                        Gusanito[0].Location = new Point(X, Y);
-                        if (bajon.Location == new Point(X, Y))
-                        {
-                            agregar_nodo(ultimo);
-                            comida_ramdon();
-                            puntos++;
-                            if(puntos>=min_niv && min_niv<=limite_nv)
-                            {
-                                time-= 60;
-                                timer.Interval = time;
-                                min_niv += 5;
-                            }
-                        }
-                        if (validar_crash())
-                            Perdiste();
-                    }
+                        MoveWorm("arriba.jpg", X, Y);
                     else
                         Perdiste();
                     break;
                 case 40:
-                    Gusanito[0].Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\abajo.jpg");
                     Y += 20;
                     if (Y <= 300)
-                    {
-                        ultimo = Gusanito[Gusanito.Count - 1].Location;
-                        acomodar_piesas();
-                        Gusanito[0].Location = new Point(X, Y);
-                        if (bajon.Location == new Point(X, Y))
-                        {
-                            agregar_nodo(ultimo);
-                            comida_ramdon();
-                            puntos++;
-                            if (puntos >= min_niv && min_niv <= limite_nv)
-                            {
-                                time -= 60;
-                                timer.Interval = time;
-                                min_niv += 5;
-                            }
-                        }
-                        if (validar_crash())
-                            Perdiste();
-                    }
+                        MoveWorm("abajo.jpg", X, Y);
                     else
                         Perdiste();
                     break;
                 case 37:
-                    Gusanito[0].Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\izquierda.jpg");
                     X -= 20;
                     if (X >= 0)
-                    {
-                        ultimo = Gusanito[Gusanito.Count - 1].Location;
-                        acomodar_piesas();
-                        Gusanito[0].Location = new Point(X, Y);
-                        if (bajon.Location == new Point(X, Y))
-                        {
-                            agregar_nodo(ultimo);
-                            comida_ramdon();
-                            puntos++;
-                            if (puntos >= min_niv && min_niv <= limite_nv)
-                            {
-                                time -= 60;
-                                timer.Interval = time;
-                                min_niv += 5;
-                            }
-                        }
-                        if (validar_crash())
-                            Perdiste();
-                    }
+                        MoveWorm("izquierda.jpg", X, Y);
                     else
                         Perdiste();
                     break;
                 case 39:
-                    Gusanito[0].Image = Image.FromFile(Application.StartupPath.ToString()+"\\imagenes\\derecha.jpg");
                     X += 20;
                     if (X <= 300)
-                    {
-
-                        ultimo = Gusanito[Gusanito.Count - 1].Location;
-                        acomodar_piesas();
-                        Gusanito[0].Location = new Point(X, Y);
-                        if (bajon.Location == new Point(X, Y))
-                        {
-                            agregar_nodo(ultimo);
-                            comida_ramdon();
-                            puntos++;
-                            if (puntos >= min_niv && min_niv <= limite_nv)
-                            {
-                                time -= 60;
-                                timer.Interval = time;
-                                min_niv += 5;
-                            }
-                        }
-                        if (validar_crash())
-                            Perdiste();
-                    }
+                        MoveWorm("derecha.jpg", X, Y);
                     else
                         Perdiste();
                     break;
             }
         }
 
-       public void Enter_()
+       public void Pause()
        {
            if (enter == 1)
            {
                timer.Dispose();
-               if (DialogResult.OK == MessageBox.Show("PAUSA\n"+Gusanito.Count))
-               {
-                   control = 0;
-                   timer.Start();
-               }
-               else
-               {
-                   control = 0;
-                   timer.Start();
-               }
-
-           }
-           else
-           {
+               MessageBox.Show("PAUSA", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               control = 0;
                timer.Start();
            }
+           else
+               timer.Start();
        }
 
-      
+        private void Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         public void Perdiste()
         {
             timer.Dispose();
-            MessageBox.Show("Perdiste...");
+            MessageBox.Show("Perdiste...", "",MessageBoxButtons.OK,MessageBoxIcon.Error);
             Gusanito[0].Location = Mapa_pixele[7, 7];
             enter = -1;
             control = 0;
@@ -308,15 +195,16 @@ namespace Gusanito_V1._0
     
         public void agregar_nodo(Point x)
         {
+            puntos++;
             PictureBox nuevo_nodo = new PictureBox();
             nuevo_nodo.Size = new Size(20,20);
             nuevo_nodo.Name = "Nodo_cuerpo" + Gusanito.Count;
             nuevo_nodo.SizeMode = PictureBoxSizeMode.StretchImage;
             nuevo_nodo.Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\cuerpo.jpg");
             nuevo_nodo.Location = x;
-            Controls.Add(nuevo_nodo);
+            Panel.Controls.Add(nuevo_nodo);
             Gusanito.Add(nuevo_nodo);
-
+            pointsLabel.Text = puntos.ToString();
         }
 
         public void acomodar_piesas()
@@ -328,7 +216,6 @@ namespace Gusanito_V1._0
                 Gusanito[i].Location = copia[y].Location;
                 y--;
             }
-
         }
 
         public void comida_ramdon()
@@ -350,7 +237,7 @@ namespace Gusanito_V1._0
 
         public void destruir()
         {
-            Controls.Clear();
+            Panel.Controls.Clear();
             this.initialBuild();
         }
 
@@ -378,9 +265,10 @@ namespace Gusanito_V1._0
                 Image = Image.FromFile(Application.StartupPath.ToString() + "\\imagenes\\comida.jpg")
             };
             comida_ramdon();
-            Controls.Add(bajon);
-            Controls.Add(Head);
+            Panel.Controls.Add(bajon);
+            Panel.Controls.Add(Head);
             Gusanito.Add(Head);
+            pointsLabel.Text = puntos.ToString();
         }
 
         public bool validar_crash()
